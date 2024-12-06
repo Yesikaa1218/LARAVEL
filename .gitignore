@@ -1,0 +1,36 @@
+# Directorios y archivos generados automáticamente
+/node_modules
+/public/hot
+/public/storage
+/storage/*.key
+/vendor
+.env
+.env.backup
+.phpunit.result.cache
+docker-compose.override.yml
+Homestead.json
+Homestead.yaml
+npm-debug.log
+yarn-error.log
+/.idea
+/.vscode
+
+# Archivos de configuración específicos del entorno
+.env
+.env.backup
+.env.example
+.phpunit.result.cache
+.phpunit-watcher.yml
+Homestead.yaml
+Homestead.json
+
+# Archivos de registro y sesiones
+/storage/logs/*.log
+/storage/framework/cache/*
+/storage/framework/sessions/*
+/storage/framework/testing/*
+/storage/framework/views/*
+
+#Extenciones de archivos que no deben subirse
+*.pdf
+composer.lock

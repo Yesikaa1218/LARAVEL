@@ -1,0 +1,103 @@
+.stricky-fixed{
+    padding: 10px 0px 10px 0px !important;
+}
+
+.stricky-fixed .logo-box1 img{
+    max-width: 160px !important;
+}
+a:hover{
+    color: #004293 ;
+}
+.accordion-button:not(.collapsed){
+    color: #004293 ;
+    background-color: rgba(0, 66, 147, 0.11);
+    box-shadow: inset 0 -1px 0 rgba(0, 66, 147 , 0.80);
+}
+.card-facts{
+    background-color: transparent;
+    border: none;
+}
+
+.card-facts span{
+    color: #1c1e27;
+    font-size: 80px;
+}
+
+@media only screen and (min-width: 992px) and (max-width: 1199px){
+    .welcome-one__right-img1 img {
+        max-width: 100%;
+    }
+  }
+
+
+
+.page-item.active .page-link {
+    z-index: 3;
+    color: #fff;
+    background-color: #1c1e27;
+    border-color: #1c1e27;
+}
+.page-link{
+    color: #1c1e27;
+}
+.page-link:hover {
+    color: #1c1e27;
+}
+
+/* and (min-width: 32px) and (max-width: 1400px) */
+@media only screen and (min-width: 32px) and (max-width: 1400px)  {
+    .logo-box1 img {
+        width: 130px;
+        
+    }
+  }
+
+@media only screen and (min-width: 32px) and (max-width:1199px){
+  .hidden{
+    visibility: hidden;
+    
+  }
+}
+
+
+
+
+
+@media (min-width: 1600px) {
+.container {
+    max-width: 1400px;
+    }
+
+    .video-one__box {
+        min-height: 720px;
+    }
+}
+
+@media (min-width: 2000px) {
+    .container {
+        max-width: 1800px;
+        }
+        .video-one__box {
+            min-height: 820px;
+        }
+    }
+
+    @media only screen and (min-width:460px) and (max-width:1199){
+       .img-pad-logo{
+        padding: 0px 0px 20px 0px;
+       }
+    }
+
+    /* Cards margin informes (mb-3) */
+
+    .mb-3{
+        margin-bottom: 1rem !important;
+    }
+
+    /* titulos */
+    @media only screen and (min-width: 32px) and (max-width: 432px)  {
+        .titulos-width {
+            font-size: 30px !important;
+            
+        }
+      }
