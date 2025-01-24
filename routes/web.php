@@ -747,6 +747,8 @@ Route::group(['middleware' => 'auth:empleado'], function () {
         Route::get('cambio-calificaciones/registro-solicitud', 'App\Http\Controllers\CalificacionesController@formSolicitud')->name('calificaciones.solicitudes.crear')->withoutMiddleware(['show']);
         Route::get('cambio-calificaciones/registro-cambio', 'App\Http\Controllers\CalificacionesController@formCambioCalificacion')->name('calificaciones.solicitudes.crearCambiocalificacion')->withoutMiddleware(['show']);
         Route::get('cambio-calificaciones/docente/{id}', 'App\Http\Controllers\CalificacionesController@indexDocente')->name('calificaciones.solicitudes.docentes')->withoutMiddleware(['show']);
+        
+        
         //Lista materias
         Route::get('cambio-calificaciones/indexMaterias','App\Http\Controllers\CalificacionesController@indexMaterias')->name('calificaciones.solicitudes.listaMaterias')->withoutMiddleware(['show']);
         Route::get('cambio-calificaciones/indexAlumnos/{idGrupo}', 'App\Http\Controllers\CalificacionesController@indexAlumnos')->name('calificaciones.solicitudes.listaAlumnos')->withoutMiddleware(['show']);
@@ -763,6 +765,7 @@ Route::group(['middleware' => 'auth:empleado'], function () {
         Route::get('cambio-calificaciones/coordinador/VerDetalle/{id}', 'App\Http\Controllers\CalificacionesController@VerDetalleCoordinador')->name('calificaciones.solicitudes.coordinadores.VerDetalleCoordinador')->withoutMiddleware(['show']);
         Route::get('cambio-calificaciones/subacademico/VerDetalle/{id}', 'App\Http\Controllers\CalificacionesController@VerDetalleSubAcademico')->name('calificaciones.solicitudes.coordinadores.VerDetalleSubAcademico')->withoutMiddleware(['show']);
         Route::get('cambio-calificaciones/escolar/VerDetalle/{id}', 'App\Http\Controllers\CalificacionesController@VerDetalleEscolar')->name('calificaciones.solicitudes.coordinadores.VerDetalleEscolar')->withoutMiddleware(['show']);
+
 
         //Actualización de Semestre en Indicadores de Escolar
         Route::get('update-semestre', 'App\Http\Controllers\SemestresController@semestreUpdateView')->name('actualizarsemestre')->withoutMiddleware(['show']);
