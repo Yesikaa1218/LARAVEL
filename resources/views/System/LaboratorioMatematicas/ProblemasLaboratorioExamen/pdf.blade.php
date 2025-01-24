@@ -557,31 +557,55 @@ console.log("ID:", idLab);
     });
 
     // Función para desactivar botones no compatibles
-    function deactivateOtherButtons(activeButton) {
-        if (activeButton !== "draggable" && isDraggableActive) {
-            isDraggableActive = false;
-            $("#toggle-draggable").removeClass("active");
-            if (selectedElement) {
-                $(selectedElement).draggable("destroy");
+function deactivateOtherButtons(activeButton) {
+    // Botones a verificar
+    const buttons = ["draggable", "resizable", "snap", "crop"];
+
+    // Iteramos sobre los botones
+    buttons.forEach(function(button) {
+        if (button !== activeButton) {
+            if (button === "draggable" && isDraggableActive) {
+                isDraggableActive = false;
+                $("#toggle-draggable").removeClass("active");
+                if (selectedElement) {
+                    $(selectedElement).draggable("destroy");
+                }
+            }
+
+            if (button === "resizable" && isResizableActive) {
+                isResizableActive = false;
+                $("#toggle-resizable").removeClass("active");
+                if (selectedElement) {
+                    $(selectedElement).resizable("destroy");
+                }
+                
+            }
+
+            if (button === "snap" && isSnapActive) {
+                isSnapActive = false;
+                $("#toggle-snap").removeClass("active");
+                if (selectedElement && isDraggableActive) {
+                    $(selectedElement).draggable("destroy"); // Destruir draggable con snap
+                    activateDrag(); // Reactivar draggable sin snap
+                }
+            }
+
+            if (button === "crop" && isCroppingActive) {
+                isCroppingActive = false;
+                $("#toggle-crop").removeClass("active");
+                if (cropper) {
+                    cropper.destroy(); // Destruir el cropper
+                    cropper = null;
+                }
+                // Cierra el modal si aún está abierto
+                const modal = document.getElementById("cropperModal");
+                if (modal) modal.style.display = "none";
+                
             }
         }
-        if (activeButton !== "resizable" && isResizableActive) {
-            isResizableActive = false;
-            $("#toggle-resizable").removeClass("active");
-            if (selectedElement) {
-                $(selectedElement).resizable("destroy");
-            }
-        }
-        
-        if (activeButton !== "snap" && isSnapActive) {
-            isSnapActive = false;
-            $("#toggle-snap").removeClass("active");
-            if (selectedElement && isDraggableActive) {
-                $(selectedElement).draggable("destroy"); // Destruir el draggable actual y volver a activarlo
-                activateDrag(); // Volver a activar el drag sin "snap"
-            }
-        }
-    }
+    });
+}
+
 
     // Función para manejar el movimiento de las imágenes
     function activateDrag() {
