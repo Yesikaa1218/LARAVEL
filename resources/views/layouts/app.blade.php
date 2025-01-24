@@ -18,7 +18,6 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    {{-- <link href="{{asset('assets/js/summernote-0.8.18-dist/summernote-bs4.min.css')}}" rel="stylesheet"> --}}
 </head>
 <body>
     <div id="app">
@@ -53,6 +52,7 @@
                                 </li>
                             @endif
                         @else
+                            <!-- Usuario autenticado -->
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                     {{ Auth::user()->name }}
@@ -68,6 +68,18 @@
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
                                         @csrf
                                     </form>
+                                </div>
+                            </li>
+
+                            <!-- Sistema Escolar -->
+                            <li class="nav-item dropdown">
+                                <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Sistema Escolar
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('cambio-calificaciones.index') }}">Cambio de Calificaciones</a>
+                                    <!-- Aquí agregamos el enlace para Solicitudes en Progreso -->
+                                    <a class="dropdown-item" href="{{ route('Request.progreso') }}">Solicitudes en Progreso</a>
                                 </div>
                             </li>
                         @endguest

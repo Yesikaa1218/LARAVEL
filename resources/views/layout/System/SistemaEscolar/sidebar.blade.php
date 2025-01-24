@@ -32,9 +32,12 @@ $empleado = Auth::guard('empleado')->user();
             <i class="fas fa-key"></i>
             <span> Cambio Contraseña </span></a>
     </li>
+
+    <li class="nav-item">
+
     @if($empleado->Firma)
     @hasanyrole('SistemaAdmin|Administrador')
-        <!-- Divider -->
+    <!-- Divider -->
         <hr class="sidebar-divider">
         <!-- Heading -->
         <div class="sidebar-heading">
@@ -57,6 +60,16 @@ $empleado = Auth::guard('empleado')->user();
         <div class="sidebar-heading">
             Escolar
         </div>
+    <!-- SE REALIZA MODIFICACIÓN LINEA 63 -->
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('Request.progreso') }}">
+                <i class="fas fa-exchange-alt"></i>
+                <span> Solicitudes en Progreso </span>
+            </a>            
+        </li>
+
+
 
         <!-- Nav Item - Charts -->
         <li class="nav-item">

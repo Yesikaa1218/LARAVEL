@@ -8,7 +8,8 @@
         "php": "^7.3|^8.0",
         "barryvdh/laravel-dompdf": "^2.0",
         "doctrine/dbal": "^3.9",
-        "fruitcake/laravel-cors": "^2.0",
+        
+        "fruitcake/laravel-cors": "^3.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jgrossi/corcel": "^5.1",
         "laracasts/flash": "^3.2",

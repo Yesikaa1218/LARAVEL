@@ -25,21 +25,23 @@ $firmaUrl =Storage::disk('custom_public')->url('Firmas/'.$empleado->Firma);
             <div class="table-responsive">
 
                 <table id="data" class="table table-flush">
-                    <thead class="thead-light">
-                        <tr>
-                            <th>Folio</th>
-                            <th>Fecha de Creación</th>
-                            <th>Materia</th>
-                            <th>Plan</th>
-                            <th>Cantidad</th>
-                            <th>Estatus Solicitud</th>
-                            <th width="250px">&nbsp;</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+    <thead class="thead-light">
+        <tr>
+            <th>Folio</th>
+            <th>Maestro</th>
+            <th>Fecha de Creación</th>
+            <th>Materia</th>
+            <th>Plan</th>
+            <th>Cantidad</th>
+            <th>Estatus</th>
+            <th width="200px">&nbsp;</th>
+        </tr>
+    </thead>
+    <tbody>
+        
+    </tbody>
+</table>
 
-                    </tbody>
-                </table>
 
             </div>
         </div>

@@ -14,15 +14,21 @@ class CambioCalificacionSolicitud extends Model
         'fkGrupo', 'fkPlan', 'Estatus', 'Activo',
     ];
 
-    // Define relaciones si es necesario
+    // Relación con la tabla 'grupos'
     public function grupo()
     {
         return $this->belongsTo(Grupo::class, 'fkGrupo', 'idGrupo');
     }
 
+    // Relación con la tabla 'plan_estudios'
     public function planEstudios()
     {
         return $this->belongsTo(PlanEstudios::class, 'fkPlan', 'id');
     }
-}
 
+    // Relación con la tabla 'cambio_calificaciones_datos'
+    public function cambioCalificacionesDatos()
+    {
+        return $this->hasMany(CambioCalificacionesDato::class, 'fkSolicitud', 'idSolicitudCambio');
+    }
+}

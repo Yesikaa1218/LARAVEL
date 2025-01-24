@@ -15,7 +15,8 @@ class EmpleadoMateria extends Model
 
     public function empleado()
     {
-        return $this->belongsTo(Empleado::class, 'fkEmpleado', 'idEmpleado');
+       // return $this->belongsTo(Empleado::class, 'fkEmpleado', 'idEmpleado') ; validar si no causa error
+       return $this->belongsTo(Empleado::class, 'fkEmpleado', 'id') ;
     }
 
     public function materia()

@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\LaboratorioController;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,6 +17,7 @@ use App\Http\Controllers\LaboratorioController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 
 
 Route::get('/','App\Http\Controllers\Front\HomeController@index')->name('index');
@@ -164,7 +166,7 @@ Route::get('post-all', function (){
 Route::middleware(['auth'])->prefix('sistema')->name('sistema.')->group(function () {
 
     Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-    
+
     Route::prefix('roles')->name('roles.')->group(function (){
         /* Roles PermissionController*/
         Route::get('index','App\Http\Controllers\RolController@indexRoles')->name('index');
@@ -837,6 +839,14 @@ Route::group(['middleware' => 'auth:empleado'], function () {
     });
 
 
+    
+    // Ruta para Cambio de Calificaciones (index)
+    Route::get('cambio-calificaciones', 'App\Http\Controllers\CalificacionesController@index')->name('cambio-calificaciones.index');
+
+    // Mostrar solicitudes pendientes
+    Route::group(['middleware' => 'auth:empleado'], function () {
+        Route::get('solicitudes-en-progreso', [App\Http\Controllers\SolicitudesController::class, 'solicitudesEnProgreso'])->name('Request.progreso');
+    });
     
     Route::prefix('SistemaEscolar')->name('SistemaEscolar.')->group(function(){
         //Login

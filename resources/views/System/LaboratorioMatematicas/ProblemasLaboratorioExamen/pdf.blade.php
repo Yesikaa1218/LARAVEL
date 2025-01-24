@@ -541,23 +541,67 @@ console.log("ID:", idLab);
             }
         });
 
+        
         $(document).ready(function() {
-            loadState();
-        });
-
-        $(document).click(function(event) {
-            if (!$(event.target).closest('.selectable').length) {
-                if (selectedElement) {
-                    $(selectedElement).removeClass("selected");
-                    if (isDraggableActive) $(selectedElement).draggable("destroy");
-                    if (isResizableActive) $(selectedElement).resizable("destroy");
-                    selectedElement = null;
-                }
+    loadState();
+    
+    $(document).click(function(event) {
+        if (!$(event.target).closest('.selectable').length) {
+            if (selectedElement) {
+                $(selectedElement).removeClass("selected");
+                if (isDraggableActive) $(selectedElement).draggable("destroy");
+                if (isResizableActive) $(selectedElement).resizable("destroy");
+                selectedElement = null;
             }
-        });
+        }
+    });
 
-        /* Código para recortar una imagen */
-        function cropImage() {
+    // Función para desactivar botones no compatibles
+    function deactivateOtherButtons(activeButton) {
+        if (activeButton !== "draggable" && isDraggableActive) {
+            isDraggableActive = false;
+            $("#toggle-draggable").removeClass("active");
+            if (selectedElement) {
+                $(selectedElement).draggable("destroy");
+            }
+        }
+        if (activeButton !== "resizable" && isResizableActive) {
+            isResizableActive = false;
+            $("#toggle-resizable").removeClass("active");
+            if (selectedElement) {
+                $(selectedElement).resizable("destroy");
+            }
+        }
+        
+        if (activeButton !== "snap" && isSnapActive) {
+            isSnapActive = false;
+            $("#toggle-snap").removeClass("active");
+            if (selectedElement && isDraggableActive) {
+                $(selectedElement).draggable("destroy"); // Destruir el draggable actual y volver a activarlo
+                activateDrag(); // Volver a activar el drag sin "snap"
+            }
+        }
+    }
+
+    // Función para manejar el movimiento de las imágenes
+    function activateDrag() {
+        if (selectedElement) {
+            $(selectedElement).draggable({
+                grid: isSnapActive ? [20, 20] : false,
+                snap: isSnapActive
+            });
+        }
+    }
+
+    // Función para manejar el redimensionamiento de las imágenes
+    function activateResize() {
+        if (selectedElement) {
+            $(selectedElement).resizable();
+        }
+    }
+
+ /* Código para recortar una imagen */
+ function cropImage() {
             if (selectedElement) {
                 const $image = $(selectedElement);
                 $('#image-to-crop').attr('src', $image.attr('src'));
@@ -616,8 +660,33 @@ console.log("ID:", idLab);
             cropImage();
         });
 
-        /* Código para cambiar problema */
-        function changeProblem() {
+    // Función para manejar la selección de una imagen
+    $(".selectable").on("click", function() {
+        // Si ya hay un elemento seleccionado, lo deseleccionamos
+        if (selectedElement) {
+            $(selectedElement).removeClass("selected");
+        }
+
+        // Seleccionamos el nuevo elemento
+        selectedElement = this;
+        $(this).addClass("selected");
+
+        // Activamos la acción correspondiente
+        if (isDraggableActive) {
+            activateDrag();
+        }
+        if (isResizableActive) {
+            activateResize();
+        }
+        if (isCroppingActive) {
+            activateCrop();
+        }
+
+        saveHistory();
+    });
+
+            /* Código para cambiar problema */
+            function changeProblem() {
             if (selectedElement) {
                 const problemTypeId = $(selectedElement).data('problem-type-id');
                 if (problemTypeId) {
@@ -740,6 +809,8 @@ console.log("ID:", idLab);
             });
         }
     });
+});
+
 </script>
 @endsection
 
