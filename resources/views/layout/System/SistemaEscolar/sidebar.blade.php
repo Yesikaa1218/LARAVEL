@@ -109,6 +109,13 @@ $empleado = Auth::guard('empleado')->user();
                 <i class="fas fa-exchange-alt"></i>
                 <span> Cambio de Calificaciones </span></a>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('Request.progreso') }}">
+                <i class="fas fa-exchange-alt"></i>
+                <span> Solicitudes en Progreso </span>
+            </a>            
+        </li>
         {{-- <li class="nav-item">
             <a class="nav-link" href="">
                 <i class="fas fa-fw fa-calendar"></i>
@@ -134,6 +141,13 @@ $empleado = Auth::guard('empleado')->user();
             <a class="nav-link" href="{{route('sistema.escolar.calificaciones.solicitudes.coordinadores')}}">
                 <i class="fas fa-exchange-alt"></i>
                 <span> Cambio de Calificaciones </span></a>
+        </li>
+
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('Request.progreso') }}">
+                <i class="fas fa-exchange-alt"></i>
+                <span> Solicitudes en Progreso </span>
+            </a>            
         </li>
         {{-- <li class="nav-item">
             <a class="nav-link" href="">
@@ -178,6 +192,12 @@ $empleado = Auth::guard('empleado')->user();
                 <span> Cambio de Calificaciones </span></a>
         </li>
         
+        <li class="nav-item">
+            <a class="nav-link" href="{{ route('Request.progreso') }}">
+                <i class="fas fa-exchange-alt"></i>
+                <span> Solicitudes en Progreso </span>
+            </a>            
+        </li>
     @endhasanyrole
     @endif
 

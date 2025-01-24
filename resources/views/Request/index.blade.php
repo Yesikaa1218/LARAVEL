@@ -6,10 +6,10 @@ $url = Storage::disk('custom_public')->url($filePath);
 $firmaUrl =Storage::disk('custom_public')->url('Firmas/'.$empleado->Firma);
 ?>
 @extends('layout.System.SistemaEscolar.main')
-@section('page_name', 'cambio de calificaciones')
+@section('page_name', 'Solicitudes en Progreso')
 @section('page-header')
 <div class="d-sm-flex align-items-center justify-content-between mb-4">
-    <h1 class="h3 mb-0 text-gray-800">Solicitudes cambio de calificación</h1>
+    <h1 class="h3 mb-0 text-gray-800">Solicitudes en progreso</h1>
     <!--<a href="{{ route('sistema.escolar.calificaciones.solicitudes.crear') }}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Registrar solicitud</a> -->
     <a href="{{ route('sistema.escolar.calificaciones.solicitudes.listaMaterias') }}" class="d-none d-sm-inline-block btn btn-primary shadow-sm"><i class="fas fa-plus fa-sm text-white-50"></i> Lista de Materias</a>
 </div>

@@ -1,14 +1,3 @@
-<?php
-use Illuminate\Support\Facades\Storage;
-use Illuminate\Support\Facades\Auth;
-
-$empleado = Auth::guard('empleado')->user();
-$filePath = 'FormatoCambioCalificacion.JPG';
-$url = Storage::disk('custom_public')->url($filePath);
-$firmaUrl =Storage::disk('custom_public')->url('Firmas/'.$empleado->Firma);
-$roles = $empleado->getRoleNames();
-?>
-
 @extends('layout.System.SistemaEscolar.main')
 @section('page_name', 'Solicitudes en Progreso')
 
@@ -60,7 +49,7 @@ $roles = $empleado->getRoleNames();
                                 <td>{{ $solicitud->created_at->format('d/m/Y') }}</td>
                                 <td>
                                     @if($solicitud->grupo && $solicitud->grupo->empleadoMateria && $solicitud->grupo->empleadoMateria->materia)
-                                        {{ $solicitud->grupo->empleadoMateria->materia->materia_licenciatur }}
+                                        {{ $solicitud->grupo->empleadoMateria->materia->materia_licenciatur}}
                                     @else
                                         N/A
                                     @endif
@@ -82,6 +71,7 @@ $roles = $empleado->getRoleNames();
                                 <td>
                                     @switch($solicitud->Estatus)
                                         @case(1) Enviada a Escolar 
+                                        
                                         @break
                                         @case(2) Firmada por Escolar 
                                         @break
@@ -100,6 +90,8 @@ $roles = $empleado->getRoleNames();
                                 <td>
                                 </td>
                             </tr>
+
+                            
                         @endforeach
                     </tbody>
                 </table>
